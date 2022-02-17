@@ -5,40 +5,62 @@
         void TurnOn();
         void TurnOff();
         bool RunSelfTest();
+
     }
     
     public class Heater : IHeater
     {
+        private Logger myLog_ = new Logger();
+
         public void TurnOn()
         {
-            System.Console.WriteLine("Heater is on");
+            myLog_.WriteLogLine("Heater is on");
+            //System.Console.WriteLine("Heater is on");
         }
 
         public void TurnOff()
         {
-            System.Console.WriteLine("Heater is off");
+            myLog_.WriteLogLine("Heater is off");
+            //System.Console.WriteLine("Heater is off");
         }
 
         public bool RunSelfTest()
         {
             return true;
         }
+
+        public int TestResult()
+        {
+            return test;
+        }
+
+        public int test { get; set; }
     }
     public class FakeHeater : IHeater
     {
+        //private FakeLogger myFakeLogger_ = new FakeLogger();
+
         public void TurnOn()
         {
-            System.Console.WriteLine("Heater is on");
+            //myFakeLogger_.WriteLogLine("Heater is on");
+            //System.Console.WriteLine("Heater is on");
+
+            test = 1;
         }
 
         public void TurnOff()
         {
-            System.Console.WriteLine("Heater is off");
+            //myFakeLogger_.WriteLogLine("Heater is off");
+            //System.Console.WriteLine("Heater is off");
+
+            test = 0;
         }
 
         public bool RunSelfTest()
         {
             return true;
         }
+
+        public int test { get; set; }
     }
 }

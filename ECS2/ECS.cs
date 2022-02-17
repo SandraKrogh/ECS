@@ -5,20 +5,23 @@ namespace ECS2
     public class ECS
     {
         private int _threshold;
-        public ITempSensor _tempSensor { private get; set; }
-        public IHeater _heater { private get; set; }
+        public ITempSensor _tempSensor { get; set; }
+        public IHeater _heater { get; set; }
+
+        public ILogger _logger;
 
         public ECS(int thr)
         {
             SetThreshold(thr);
             _tempSensor = new TempSensor();
             _heater = new Heater();
+            _logger = new Logger();
         }
 
         public void Regulate()
         {
             var t = _tempSensor.GetTemp();
-            Console.WriteLine($"Temperatur measured was {t}");
+            _logger.WriteLogLine($"Temperatur measured was {t}");
             if (t < _threshold)
                 _heater.TurnOn();
             else
