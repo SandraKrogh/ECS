@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ECS2\ECS2.csproj" />
+    <ProjectReference Include="..\ECSNSubsti\ECSNSubsti.csproj" />
   </ItemGroup>
 
 </Project>
